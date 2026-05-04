@@ -48,23 +48,11 @@ class Michelson(i3.Circuit):
                 [
                     ("fgc_1:opt1", "dc:opt1", "fgc_1_opt1_to_dc_opt1"),
                     ("fgc_2:opt1", "dc:opt2", "fgc_2_opt1_to_dc_opt2"),
-                    
-                ],
-                bend_radius=self.bend_radius,  # if this value is to big the manhattan connection will not be able to fit in the layout, if it is too small the connection will be very sharp and might cause losses. You can adjust this value to find a good balance between compactness and performance.
-            ),
-
-            
-            i3.ConnectManhattan(
-                [
                     ("dc:opt3", "yb_2:opt1", "dc_opt3_to_yb_2_opt1",),
                     
                 ],
                 bend_radius=self.bend_radius,  # if this value is to big the manhattan connection will not be able to fit in the layout, if it is too small the connection will be very sharp and might cause losses. You can adjust this value to find a good balance between compactness and performance.
-            # control_points=[
-            #                 i3.V(fgc_spacing_y * 0.65, flexible=True)
-            # ],
             ),
-
 
             # sensing arm
             i3.ConnectManhattan(
@@ -110,6 +98,7 @@ class Michelson(i3.Circuit):
     
     def annotate_trace_template(trace):
         return {"trace template": trace.trace_template.cell.__class__.__name__}
+MZI = Michelson
 #%%
 ### LAYOUT ###
 
